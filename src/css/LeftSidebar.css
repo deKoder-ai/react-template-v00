@@ -1,0 +1,39 @@
+.left-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  min-width: 250px;
+  min-height: calc(100vh - 5rem);
+  background-color: #2d2b38;
+  box-shadow: 7px 0px 7px #00000036;
+}
+.left-sidebar button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ffffff2c;
+  transition: all 0.15s ease-out;
+}
+.left-sidebar button:hover,
+.left-sidebar button:focus {
+  color: #ffffff;
+  background-color: #3b3752;
+  outline: none;
+  text-shadow: 1px 1px 2px black;
+}
+.left-sidebar .projects-button {
+  width: calc(100% - 2rem);
+}
+.left-sidebar .new-project-button {
+  padding: 1rem 2rem;
+  width: 65px;
+  height: 5.2rem;
+  background-image: url(../assets/add-project.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  border-left: 1px solid #ffffff2c;
+}
