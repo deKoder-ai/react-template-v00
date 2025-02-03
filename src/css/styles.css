@@ -28,6 +28,7 @@
   --dark-blue-gray-1: #2d2b38;
   --light-blue-gray-1: #3b3752;
   --light-blue-gray-2: #423c64;
+  --nav-bar-color: #1e1d29;
 }
 
 button {
@@ -42,7 +43,7 @@ label {
   margin: 0rem 1rem;
   margin-bottom: 0.2rem;
 }
-input {
+input, select {
   outline: 2px solid #00000067;
   padding: 0.5rem 1rem;
   color: white;
@@ -52,7 +53,8 @@ input {
   background-color: var(--light-blue-gray-1);
   transition: all var(--transition-time) ease-out;
 }
-input:focus {
+input:focus,
+select:focus {
   outline: 3px solid var(--blue);
 }
 .submit-button {
@@ -180,15 +182,19 @@ input:focus {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 82%;
-  background-color: #ffffffc7;
-  border-radius: 7px;
+  background-color: #a49bd4;
+  border-radius: 23px;
+  outline: 1px solid #ffffff73;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.356);
   transition: all var(--transition-time) ease-out;
 }
 .project-content-head .add-task:hover,
 .project-content-head .add-task:focus {
-  background-color: #e7e5ffea;
-  outline: 2px solid var(--light-blue-gray-2);
+  width: 2.6rem;
+  margin-left: -0.1rem;
+  margin-bottom: -0.5rem;
+  background-color: #ffffffea;
+  outline: 4px solid var(--blue);
 }
 
 .project-content-head .edit-project-name {
@@ -219,4 +225,71 @@ input:focus {
 .project-content-head .edit-project-name:focus {
   outline: none;
   border: none;
+}
+
+.new-task-form {
+  position: fixed;
+  left: 50%;
+  top: 11%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  background-color: var(--dark-blue-gray-1);
+  padding: 3rem 5rem;
+  border-radius: 23px;
+  border: 2px solid #554e80;
+  box-shadow: 5px 5px 11px #000000dc;
+}
+.new-task-form h3 {
+  font-size: 2.3rem;
+  text-align: center;
+  margin: -2rem 0rem 1.5rem 0rem;
+}
+.new-task-form .task-input {
+  width: 56rem;
+}
+.new-task-form input,
+.new-task-form select {
+  width: 27rem;
+  margin-bottom: 2rem;
+}
+.new-task-form select {
+  padding: 0.95rem 1rem;
+}
+.new-task-form textarea {
+  width: 56rem;
+  outline: 2px solid #00000067;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-size: 1.6rem;
+  border-radius: 10px;
+  margin: 0rem 1rem;
+  background-color: var(--light-blue-gray-1);
+  resize: vertical;
+  max-height: 170px;
+  min-height: 6.2rem;
+  transition: all var(--transition-time) ease-out;
+}
+.new-task-form ::-webkit-scrollbar {
+  display: none;
+}
+
+.new-task-form textarea:focus {
+  outline: 3px solid var(--blue);
+}
+.new-task-form .submit-button {
+  margin-top: 1.5rem;
+}
+.new-task-form .form-error {
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+}
+
+.task-list {
+  background-color: #3a3747;
+  width: 100%;
+  overflow-y: scroll;
+  height: calc(100vh - var(--nav-bar-height) - 10.4rem);
+  display: grid;
+  padding-top: 2rem;
+  grid-template-columns: 3.7rem 4fr 1.5fr 1fr 1.5fr 100px;
 }

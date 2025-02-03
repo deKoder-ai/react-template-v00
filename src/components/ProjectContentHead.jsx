@@ -1,26 +1,42 @@
 'use strict';
+import { useState } from 'react';
 import EditName from './EditName.jsx';
 import EditDate from './EditDate.jsx';
+import NewTaskForm from './NewTaskForm.jsx';
 
 const ProjectContentHead = ({ project, functions }) => {
+  console.log(functions);
   const name = project.name;
   const date = project.date;
+  const [displayNewTaskForm, setDisplayNewTaskForm] = useState(false);
+  // functions.setDisplayNewTaskForm = setDisplayNewTaskForm;
+  const toggleNewTaskForm = () => {
+    if (!displayNewTaskForm) {
+      setDisplayNewTaskForm(true);
+    } else {
+      setDisplayNewTaskForm(false);
+    }
+  };
 
   return (
     <div className='project-content-head'>
       <div className='head'>
         <EditName project={project} functions={functions} />
         <EditDate project={project} functions={functions} />
-        {/* <h2>Due Date: {formatDate(date, 'uk')}</h2> */}
       </div>
       <div className='todo-head'>
-        <button className='add-task'></button>
+        <button className='add-task' onClick={toggleNewTaskForm}></button>
         <h3>Task</h3>
         <h3>Due Date</h3>
         <h3>Priority</h3>
         <h3>Notes</h3>
         <h3>Done</h3>
       </div>
+      <NewTaskForm
+        display={displayNewTaskForm}
+        functions={{ functions }}
+        setDisplayNewTaskForm={setDisplayNewTaskForm}
+      />
     </div>
   );
 };

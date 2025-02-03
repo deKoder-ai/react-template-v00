@@ -1,0 +1,52 @@
+.radio-check {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 20px;
+  background-color: #c8c5f1;
+  border: 2px solid black;
+  box-shadow: 2px 2px 3px #00000050,
+    -2px -2px 3px #0000002a;
+  transition: all 0.15 ease-out;
+}
+.radio-check:hover,
+.radio-check:focus {
+  outline: 2px solid #ffffff44;
+  cursor: pointer;
+}
+.radio-checkun {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 20px;
+  background-color: #827ebd;
+  border: 2px solid black;
+  box-shadow: 2px 2px 3px #00000050,
+    -2px -2px 3px #0000002a;
+  transition: all 0.15 ease-out;
+}
+.radio-checked {
+  background-color: #7365afc0;
+  width: 47%;
+  height: 47%;
+  border-radius: 100px;
+  border: 3px solid #190d53bb;
+  transition: all 0.15s ease-out;
+}
+.radio-uncheck:hover {
+  background-color: rgba(0, 0, 255, 0.336);
+}
+.radio-uncheck {
+  background-color: #7365af1a;
+  width: 90%;
+  height: 90%;
+  border-radius: 100px;
+  border: 2px solid #190d535b;
+  transition: all 0.15s ease-out;
+}

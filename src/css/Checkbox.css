@@ -1,0 +1,29 @@
+.checkbox {
+  position: relative;
+  background-color: rgb(225, 217, 253);
+  border-radius: 9px;
+  border: 2px solid black;
+  box-shadow: 2px 2px 3px #00000050,
+    -2px -2px 3px #0000002a;
+  transition: all 1s ease-in-out;
+  /* background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center; */
+}
+.checkbox:hover {
+  cursor: pointer;
+}
+.check {
+  position: absolute;
+  top: -77%;
+  left: 6%;
+  width: 92%;
+  transform: rotate(-9deg);
+}
+
+.question {
+  position: absolute;
+  top: -85%;
+  left: -25%;
+  width: 150%;
+}

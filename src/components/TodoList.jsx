@@ -67,6 +67,9 @@ const TodoListApp = () => {
     newProjectsArray.push(newProject);
     setProjectsArray(newProjectsArray);
   };
+  const addTask = () => {
+    console.log('task adding n');
+  };
   const selectProject = (projectId) => {
     const project = projectsArray.find((project) => project.id === projectId);
     setCurrentProject(project);
@@ -98,7 +101,10 @@ const TodoListApp = () => {
             array={projectsArray}
             functions={{ showNewProjForm, selectProject }}
           />
-          <ProjectContent project={currentProject} functions={{ editName, editDate }} />
+          <ProjectContent
+            project={currentProject}
+            functions={{ editName, editDate, addTask }}
+          />
           <NewProjectForm
             functions={{ close, addProject }}
             display={newProjFormDisplay}
