@@ -31,3 +31,35 @@ https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadoplj
 Setting up editor
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 terminal: npx eslint --init
+
+
+GIT - CREATE A NEW BRANCH
+- make new branch and switch to it
+git checkout -b //new-branch-name//
+- add branch to remote repository
+git push origin //new-branch-name//
+- check which branch is being worked on
+git branch
+- change branch
+git checkout //branch-name//
+- push updates to new branch
+git add . && git commit
+git push origin //branch-name//
+
+GIT - MERGE BRANCHES
+- check everything is committed
+git status
+- checkout to branch to merge into
+git checkout main
+git merge //branch-name//
+- check last commit message
+git log -1
+- push to remote
+git push origin main
+- delete the obsolete branch
+git branch -d //branch-name//
+- delete branch from remote
+git push origin -d //branch-name//
+
+GIT - REVERT TO LAST COMMIT
+git revert HEAD
