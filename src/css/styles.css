@@ -83,7 +83,8 @@ input:focus {
 .content {
   margin-top: 5rem;
   width: 100%;
-  overflow-y: hidden;
+  display: flex;
+  /* overflow-y: hidden; */
 }
 .flex {
   display: flex;
@@ -100,6 +101,15 @@ input:focus {
   min-width: 100vw;
   min-height: 100vh;
   z-index: 1000;
+}
+.form-error {
+  font-family: poppins;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0.6rem 1rem -1.5rem;
+  color: #ff163d;
+  text-shadow: 1px 1px 2px #00000085;
+  text-align: center;
 }
 
 .new-project-form {
@@ -124,4 +134,89 @@ input:focus {
 }
 .new-project-form .submit-button {
   margin-top: 3.5rem;
+}
+
+
+.project-content {
+  width: 100%;
+  height: calc(100vh - var(--nav-bar-height));
+  /* background-color: green; */
+}
+.project-content-head {
+  /* position: relative; */
+  width: 100%;
+  height: 10.4rem;
+  background-color: var(--dark-blue-gray-1);
+  box-shadow: 0px 5px 7px #00000021;
+  border-bottom: 1px solid #ffffff2c;
+  border-left: 1px solid #ffffff2c;
+}
+.project-content-head .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.616);
+}
+.project-content-head .head h1 {
+  font-size: 3rem;
+}
+.project-content-head .head h2 {
+  font-size: 2rem;
+}
+.project-content-head h3 {
+  font-size: 1.8rem;
+}
+.project-content-head .todo-head {
+  padding: 0rem 3rem;
+  display: grid;
+  grid-template-columns: 3.7rem 4fr 1.5fr 1fr 1.5fr 100px;
+}
+.project-content-head .add-task {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.3rem;
+  background-image: url(../assets/add-task.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 82%;
+  background-color: #ffffffc7;
+  border-radius: 7px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.356);
+  transition: all var(--transition-time) ease-out;
+}
+.project-content-head .add-task:hover,
+.project-content-head .add-task:focus {
+  background-color: #e7e5ffea;
+  outline: 2px solid var(--light-blue-gray-2);
+}
+
+.project-content-head .edit-project-name {
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 0rem;
+  margin: 0rem;
+  background-color: #ffffff00;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+  z-index: 1001;
+}
+.project-content-head .edit-project-name:focus {
+  font-size: 3rem;
+  padding: 0rem;
+  margin: 0rem;
+  background-color: #ffffff00;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+}
+.project-content-head .edit-project-date {
+  z-index: 1001;
+  outline: none;
+  border: none;
+}
+.project-content-head .edit-project-name:focus {
+  outline: none;
+  border: none;
 }

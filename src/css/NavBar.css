@@ -5,6 +5,7 @@
   width: 100%;
   height: var(--nav-bar-height);
   background-color: #06040e;
+  z-index: 10;
 }
 .nav-bar h1 {
   font-size: 2rem;

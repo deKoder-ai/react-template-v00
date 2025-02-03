@@ -1,3 +1,4 @@
+'use strict';
 import '../css/NavBar.css';
 
 const NavBar = () => {
