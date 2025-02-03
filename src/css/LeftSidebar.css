@@ -1,11 +1,12 @@
 .left-sidebar {
   position: absolute;
+  /* top: var(--nav-bar-height); */
   top: 0;
   left: 0;
   width: 20%;
   min-width: 250px;
   min-height: calc(100vh - 5rem);
-  background-color: #2d2b38;
+  background-color: var(--dark-blue-gray-1);
   box-shadow: 7px 0px 7px #00000036;
 }
 .left-sidebar button {
@@ -15,12 +16,12 @@
   font-size: 1.8rem;
   padding: 1rem 2rem;
   border-bottom: 1px solid #ffffff2c;
-  transition: all 0.15s ease-out;
+  transition: all var(--transition-time) ease-out;
 }
 .left-sidebar button:hover,
 .left-sidebar button:focus {
   color: #ffffff;
-  background-color: #3b3752;
+  background-color: var(--light-blue-gray-1);
   outline: none;
   text-shadow: 1px 1px 2px black;
 }

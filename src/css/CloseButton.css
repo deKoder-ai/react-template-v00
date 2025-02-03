@@ -1,0 +1,21 @@
+.close-button {
+  width: 2.7rem;
+  height: 2.7rem;
+  position: absolute;
+  top: 1.7rem;
+  right: 1.8rem;
+  outline: 2px solid var(--light-blue-gray-2);
+  border-radius: 20px;
+  background-image: url(../assets/x-white.svg);
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: center;
+  box-shadow: 2px 2px 5px #000000b4;
+  transition: all var(--transition-time) ease-out;
+}
+.close-button:hover,
+.close-button:focus {
+  background-color: var(--red);
+  outline: 2px solid #ffffffc5;
+  box-shadow: 3px 3px 5px black;
+}
