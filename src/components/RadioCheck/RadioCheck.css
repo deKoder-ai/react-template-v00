@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 20px;
   background-color: #c8c5f1;
   border: 2px solid black;
@@ -22,8 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 20px;
   background-color: #827ebd;
   border: 2px solid black;

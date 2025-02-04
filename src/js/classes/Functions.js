@@ -33,6 +33,7 @@ class DevTools {
    * @param {string} color - Sets the color of the outline  (default: blue)
    */
   addOutlineToAllElements(toggle, width = 1, style = 'dashed', color = 'blue') {
+    console.log('xdfg');
     if (toggle && this.on) {
       var styleElement = document.createElement('style');
       styleElement.innerHTML = `* {outline: ${width}px ${style} ${color}}`;
@@ -203,7 +204,7 @@ const F = {
     let element = document.createElement('a');
     element.setAttribute(
       'href',
-      'data:text/plain;charset=utf-8,' + encodeURIComponent(content),
+      'data:text/plain;charset=utf-8,' + encodeURIComponent(content)
     );
     element.setAttribute('download', `${filename}.txt`);
     element.style.display = 'none';
@@ -267,7 +268,7 @@ const F = {
     processEvent,
     type = 'click',
     log = 'false',
-    preventDefault = 'false',
+    preventDefault = 'false'
   ) {
     this.processEvent = processEvent;
     this.type = type;

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CloseButton from './CloseButton';
 import FormError from './FormError';
 import Mask from './Mask';
+import '../css/NewTaskForm.css';
 
 const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
   console.log(functions);
