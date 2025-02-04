@@ -2,7 +2,13 @@
 import { useState } from 'react';
 import Mask from './Mask';
 
-const EditText = ({ textInput, editTextCallback, textClass = '', editClass = '' }) => {
+const EditText = ({
+  textInput,
+  editTextCallback,
+  textClass = '',
+  editClass = '',
+  taskId,
+}) => {
   // set state for text input and edit view toggle
   const [text, setText] = useState(textInput);
   const [toggleTextEdit, setToggleTextEdit] = useState(false);
@@ -20,7 +26,7 @@ const EditText = ({ textInput, editTextCallback, textClass = '', editClass = '' 
     } else if (e.key === 'Enter') {
       // display edited text and call editText callback function
       document.removeEventListener('keydown', textKeyPress);
-      editTextCallback(text);
+      editTextCallback(text, taskId);
       textEditDisplay();
     }
   };

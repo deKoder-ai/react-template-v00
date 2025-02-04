@@ -5,7 +5,6 @@ import EditDate from './EditDate.jsx';
 import NewTaskForm from './NewTaskForm.jsx';
 
 const ProjectContentHead = ({ project, functions }) => {
-  console.log(functions);
   const name = project.name;
   const date = project.date;
   const [displayNewTaskForm, setDisplayNewTaskForm] = useState(false);
@@ -34,7 +33,7 @@ const ProjectContentHead = ({ project, functions }) => {
       </div>
       <NewTaskForm
         display={displayNewTaskForm}
-        functions={{ functions }}
+        functions={functions}
         setDisplayNewTaskForm={setDisplayNewTaskForm}
       />
     </div>

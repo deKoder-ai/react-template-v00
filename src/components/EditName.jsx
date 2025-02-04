@@ -1,6 +1,7 @@
 'use strict';
 import { useState } from 'react';
 import Mask from './Mask';
+import CloseButton from './CloseButton';
 
 const EditName = ({ project, functions }) => {
   const editName = functions.editName;
@@ -40,6 +41,7 @@ const EditName = ({ project, functions }) => {
           autoFocus
           onFocus={(event) => event.target.select()}
         />
+        <CloseButton close={maskClick} />
       </>
     );
   } else {

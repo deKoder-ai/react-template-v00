@@ -84,6 +84,7 @@ select:focus {
   position: relative;
   /* width: 100vw; */
   max-height: 100vh;
+    overflow-y: hidden;
 }
 .content {
   margin-top: 5rem;
@@ -235,7 +236,7 @@ select:focus {
   width: 100%;
   overflow-y: scroll;
   height: calc(100vh - var(--nav-bar-height) - 10.4rem);
-  padding: 0.2rem 1.5rem 0rem 3rem;
+  padding: 0.3rem 1.5rem 0rem 3rem;
 }
 /* .task-list ::-webkit-scrollbar {
   display: none;
@@ -252,7 +253,6 @@ select:focus {
 .task-name {
   transform: translateX(-2rem);
   width: calc(100% + 2rem);
-
 }
 .truncate {
   white-space: nowrap;
@@ -260,18 +260,42 @@ select:focus {
   text-overflow: ellipsis;
 }
 .todo-item .task-name-edit {
-  transform: translateX(-2rem);
+  position: relative;
+  transform: translateX(-2rem) translateY(-0.1rem);
   width: calc(100% + 2rem);
   border: none;
   outline: none;
   background-color: rgba(0, 128, 0, 0);
-  z-index: 10001;
+  z-index: 1001;
   font-size: 1.4rem;
-  margin: 0;
-  padding: 0;
+  margin: 0rem;
+  padding: 0rem;
   border-radius: 0px;
 }
 .task-date {
-
+  text-align: right;
+  font-weight: 400;
+  transform: translateY(-0.2rem);
+  margin-right: 2.3rem;
+}
+.task-date-edit {
+  z-index: 1001;
+  background-color: #00000000;
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  padding: 0rem;
+  margin: 0rem;
+  padding-left: 3rem;
+  width: 120%;
+  transform: translateX(-30%) translateY(-0.1rem);
+  /* height: 70%; */
+}
+.task-date-edit:hover,
+.task-date-edit:focus {
+  outline: none;
+  border: none;
+  padding: none;
+  margin: none;
 }
 

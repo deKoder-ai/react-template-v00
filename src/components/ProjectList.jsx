@@ -17,9 +17,11 @@ const Project = ({ project, functions }) => {
 };
 
 const ProjectList = ({ array, functions }) => {
-  const projects = array.map((project) => (
-    <Project key={project.id} project={project} functions={functions} />
-  ));
+  const projects = array
+    .filter((project) => project.name !== 'Daily Tasks' && project.name !== 'Today')
+    .map((project) => (
+      <Project key={project.id} project={project} functions={functions} />
+    ));
   return <div className='project-list'>{projects}</div>;
 };
 

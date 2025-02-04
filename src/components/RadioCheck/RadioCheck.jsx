@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import './RadioCheck.css';
 
-const RadioCheck = ({ initialStatus, callback }) => {
+const RadioCheck = ({ initialStatus, callback, taskId }) => {
   const [status, setStatus] = useState(initialStatus);
   const toggleStatus = () => {
     status ? setStatus(false) : setStatus(true);
-    callback(status);
+    callback(!status, taskId);
   };
   const checkClass = status ? 'radio-checked' : 'radio-uncheck';
   const contClass = status ? 'radio-check' : 'radio-checkun';

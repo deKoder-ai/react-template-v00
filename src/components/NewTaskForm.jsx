@@ -6,14 +6,10 @@ import Mask from './Mask';
 import '../css/NewTaskForm.css';
 
 const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
-  console.log(functions);
-  // assign props
-  const close = functions.close;
-  const newTask = functions.addTask;
   // set state
   const [task, setTask] = useState('');
   const [date, setDate] = useState('');
-  const [priority, setPriority] = useState('');
+  const [priority, setPriority] = useState('Medium');
   const [notes, setNotes] = useState('');
   const [taskErrorDisplay, setTaskErrorDisplay] = useState(false);
   const [formErrorDisplay, setFormErrorDisplay] = useState(false);
@@ -35,8 +31,8 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
     if (task && date && priority) {
       setTaskErrorDisplay(false);
       setFormErrorDisplay(false);
-      newTask(task, date, priority, notes);
-      close();
+      functions.addTask(task, date, priority, notes);
+      closeForm();
     }
     if (task === '') {
       setTaskErrorDisplay(true);
@@ -48,7 +44,7 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
   const closeForm = () => {
     setTask('');
     setDate('');
-    setPriority('');
+    setPriority('Medium');
     setNotes('');
     setDisplayNewTaskForm(false);
   };
@@ -70,26 +66,28 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
         <div className='new-task-form'>
           <h3>NEW TASK</h3>
           <div>
-            <label htmlFor=''>Task:</label>
+            <label htmlFor='new-task-task-input'>Task:</label>
             <input
               type='text'
+              id='new-task-task-input'
               className='task-input'
               placeholder='Task...'
               value={task}
               onChange={(event) => updateTask(event.target.value)}
               required
               autoFocus
-              onFocus={(event) => event.target.select()}
+              onFocus={(e) => e.target.select()}
             />
             <FormError text={'Please enter a task'} display={taskErrorDisplay} />
           </div>
           <div className='flex'>
             <div>
-              <label htmlFor=''>Due Date:</label>
+              <label htmlFor='new-task-task-date'>Due Date:</label>
               <input
                 type='date'
+                id='new-task-task-date'
                 value={date}
-                onChange={(event) => updateDate(event.target.value)}
+                onChange={(e) => updateDate(e.target.value)}
                 required
               />
               <FormError text={'Please enter a due date'} display={formErrorDisplay} />
@@ -99,7 +97,8 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
               <select
                 id='new-task-priority'
                 name='new-task-priority'
-                onChange={(event) => updatePriority(event.target.value)}
+                value={priority}
+                onChange={(e) => updatePriority(e.target.value)}
                 required
               >
                 <option value='Critical'>Critical</option>
@@ -113,11 +112,12 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
               <FormError text={'Please select a priority'} display={formErrorDisplay} />
             </div>
           </div>
-          <label htmlFor=''>Notes:</label>
+          <label htmlFor='new-task-task-noted'>Notes:</label>
           <textarea
+            id='new-task-task-noted'
             rows='2'
             value={notes}
-            onChange={(event) => setNotes(event.target.value)}
+            onChange={(e) => setNotes(e.target.value)}
           ></textarea>
           <div className='flex'>
             <button className='submit-button' onClick={submit}>

@@ -12,6 +12,7 @@
   background-position: center;
   box-shadow: 2px 2px 5px #000000b4;
   transition: all var(--transition-time) ease-out;
+  z-index: 1001;
 }
 .close-button:hover,
 .close-button:focus {
