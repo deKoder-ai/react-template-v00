@@ -3,8 +3,7 @@
   /* top: var(--nav-bar-height); */
   top: 0;
   left: 0;
-  width: 20%;
-  min-width: 250px;
+  width: 31rem;
   min-height: calc(100vh - 5rem);
   background-color: var(--dark-blue-gray-1);
   box-shadow: 7px 0px 7px #00000023;

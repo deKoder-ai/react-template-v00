@@ -112,9 +112,9 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
               <FormError text={'Please select a priority'} display={formErrorDisplay} />
             </div>
           </div>
-          <label htmlFor='new-task-task-noted'>Notes:</label>
+          <label htmlFor='new-task-task-notes'>Notes:</label>
           <textarea
-            id='new-task-task-noted'
+            id='new-task-task-notes'
             rows='2'
             value={notes}
             onChange={(e) => setNotes(e.target.value)}

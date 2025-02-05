@@ -1,16 +1,15 @@
 'use strict';
 import { useState } from 'react';
 import { useEffect } from 'react';
-
 import '../css/reset.css';
 import '../css/poppins.css';
 import '../css/styles.css';
-
 import NavBar from './NavBar';
 import Mask from './Mask';
 import LeftSidebar from './LeftSidebar';
 import ProjectContent from './ProjectContent';
 import NewProjectForm from './NewProjectForm';
+
 import { getDate } from '../js/scripts/getDate';
 
 const TodoListApp = () => {
@@ -243,7 +242,13 @@ const TodoListApp = () => {
     currentTask.priority = priority;
     setProjectsArray(arrayCopy);
   };
-
+  const editNotes = (notes, id) => {
+    const arrayCopy = Array.from(projectsArray);
+    const current = arrayCopy.find((project) => project.id === currentProject.id);
+    const currentTask = current.tasks.find((task) => task.id === id);
+    currentTask.notes = notes;
+    setProjectsArray(arrayCopy);
+  };
   const editCompleted = (completed, id) => {
     const arrayCopy = Array.from(projectsArray);
     const current = arrayCopy.find((project) => project.id === currentProject.id);
@@ -251,12 +256,34 @@ const TodoListApp = () => {
     currentTask.completed = completed;
     setProjectsArray(arrayCopy);
   };
-  // id: 2,
-  // task: 'Buy Groceries',
-  // date: '2024-02-05',
-  // priority: 'Low',
-  // notes: 'Pick up milk, bread, and eggs on the way home.',
-  // completed: false,
+
+  const saveProjects = (filename, content, json) => {
+    if (json) {
+      content = JSON.stringify(content);
+    }
+    let element = document.createElement('a');
+    element.setAttribute(
+      'href',
+      'data:text/plain;charset=utf-8,' + encodeURIComponent(content)
+    );
+    element.setAttribute('download', `${filename}.txt`);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+  const readFileAsText = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(reader.error);
+      reader.readAsText(file);
+    });
+  };
+  const loadProjects = (file) => {
+    setProjectsArray(file);
+    // switch view to first project in list
+  };
 
   // event listeners
   document.addEventListener('keydown', escape);
@@ -266,7 +293,14 @@ const TodoListApp = () => {
     return (
       <div className='page'>
         <Mask close={close} display={maskDisplay} />
-        <NavBar />
+        <NavBar
+          projects={projectsArray}
+          functions={{
+            saveProjects,
+            loadProjects,
+            readFileAsText,
+          }}
+        />
         <div className='content'>
           <LeftSidebar
             array={projectsArray}
@@ -277,10 +311,11 @@ const TodoListApp = () => {
             functions={{
               editName,
               editDate,
-              editPriority,
               addTask,
               editTask,
               editTaskDate,
+              editPriority,
+              editNotes,
               editCompleted,
             }}
           />
@@ -296,3 +331,18 @@ const TodoListApp = () => {
 };
 
 export default TodoListApp;
+
+// hook.js:608 Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>. Error Component Stack
+//     at option (<anonymous>)
+//     at select (<anonymous>)
+//     at div (<anonymous>)
+//     at div (<anonymous>)
+//     at div (<anonymous>)
+//     at NewTaskForm (NewTaskForm.jsx:8:24)
+//     at div (<anonymous>)
+//     at ProjectContentHead (ProjectContentHead.jsx:7:31)
+//     at div (<anonymous>)
+//     at ProjectContent (ProjectContent.jsx:5:27)
+//     at div (<anonymous>)
+//     at div (<anonymous>)
+//     at TodoListApp (TodoList.jsx?t=1738751329721:32:3)

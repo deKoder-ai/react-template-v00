@@ -1,7 +1,7 @@
 'use strict';
 const Mask = ({ close, display }) => {
   if (display === true) {
-    return <button className='mask' onClick={close}></button>;
+    return <div className='mask' onClick={close}></div>;
   } else {
     return null;
   }

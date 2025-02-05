@@ -3,6 +3,7 @@ import { useState } from 'react';
 import EditName from './EditName.jsx';
 import EditDate from './EditDate.jsx';
 import NewTaskForm from './NewTaskForm.jsx';
+import FilterButton from './FilterButton.jsx';
 
 const ProjectContentHead = ({ project, functions }) => {
   const name = project.name;
@@ -20,7 +21,13 @@ const ProjectContentHead = ({ project, functions }) => {
   return (
     <div className='project-content-head'>
       <div className='head'>
-        <EditName project={project} functions={functions} />
+        <div className='flex'>
+          <EditName project={project} functions={functions} />
+          <FilterButton
+            filterValues={functions.filterValues}
+            setFilterValues={functions.setFilterValues}
+          />
+        </div>
         <EditDate project={project} functions={functions} />
       </div>
       <div className='todo-head'>
