@@ -23,10 +23,7 @@ const ProjectContentHead = ({ project, functions }) => {
       <div className='head'>
         <div className='flex'>
           <EditName project={project} functions={functions} />
-          <FilterButton
-            filterValues={functions.filterValues}
-            setFilterValues={functions.setFilterValues}
-          />
+          <FilterButton filterValues={functions.filterValues} functions={functions} />
         </div>
         <EditDate project={project} functions={functions} />
       </div>

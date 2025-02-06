@@ -32,7 +32,7 @@ const EditDate = ({ project, functions }) => {
     document.addEventListener('keydown', dateKeyPress);
     return (
       <>
-        <Mask close={maskClick} display={true} />
+        <Mask onClose={maskClick} />
         <input
           type='date'
           className='edit-project-date'

@@ -53,7 +53,7 @@ const EditPriority = ({
     document.addEventListener('keydown', priorityKeyPress);
     return (
       <>
-        <Mask close={maskClick} display={true} />
+        <Mask onClose={maskClick} />
         <select
           className={editClass}
           id='priority-edit'
@@ -65,9 +65,7 @@ const EditPriority = ({
         >
           <option value='Critical'>Critical</option>
           <option value='High'>High</option>
-          <option value='Medium' selected>
-            Medium
-          </option>
+          <option value='Medium'>Medium</option>
           <option value='Low'>Low</option>
           <option value='Very Low'>Very Low</option>
         </select>

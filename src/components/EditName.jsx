@@ -32,7 +32,7 @@ const EditName = ({ project, functions }) => {
     document.addEventListener('keydown', nameKeyPress);
     return (
       <>
-        <Mask close={maskClick} display={true} />
+        <Mask onClose={maskClick} />
         <input
           type='text'
           className='edit-project-name'

@@ -1,0 +1,68 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropdownMask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.dropdown .dropdownButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.dropdown .dropdownMenu {
+  width: 20rem;
+  background-color: white;
+  position: absolute;
+  top: 5rem;
+  border-radius: 0px 0px 7px 7px;
+  outline: 1px solid rgba(0, 0, 0, 0.56);
+  box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.39);
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.dropdown .dropdownMenu.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown .dropdownMenu.right {
+  right: 0;
+}
+
+.dropdown .dropdownMenu.left {
+  left: 0;
+}
+
+.dropdown .dropdownMenu button {
+  font-size: 1.6rem;
+  border: none;
+  display: block;
+  color: black;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 2rem;
+  background: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.dropdown .dropdownMenu button:hover {
+  cursor: pointer;
+  background-color: rgba(36, 36, 95, 0.521);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.31);
+}
+
+.dropdown .dropdownMenu :last-child {
+  padding-bottom: 1rem;
+}

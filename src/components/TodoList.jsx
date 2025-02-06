@@ -7,7 +7,8 @@ import '../css/styles.css';
 import NavBar from './NavBar';
 import Mask from './Mask';
 import LeftSidebar from './LeftSidebar';
-import ProjectContent from './ProjectContent';
+import ProjectContentHead from './ProjectContentHead';
+import TaskList from './TaskList.jsx';
 import NewProjectForm from './NewProjectForm';
 
 import { getDate } from '../js/scripts/getDate';
@@ -15,12 +16,11 @@ import { getDate } from '../js/scripts/getDate';
 const TodoListApp = () => {
   // change page title
   useEffect(() => {
-    document.title = 'dK | Todo List';
+    document.title = 'Taska | Projects';
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
   // set initial state
-  const [maskDisplay, setMaskDisplay] = useState('false');
-  const [newProjFormDisplay, setNewProjFormDisplay] = useState('false');
+  const [newProjFormDisplay, setNewProjFormDisplay] = useState(false);
   const todoList = [
     {
       id: 1,
@@ -158,20 +158,13 @@ const TodoListApp = () => {
   const [currentProject, setCurrentProject] = useState(projectsArray[0]);
 
   // functions
-  const close = () => {
-    setMaskDisplay(false);
-    setNewProjFormDisplay(false);
-  };
   const escape = (e) => {
-    if (e.key === 'Escape') {
-      close();
+    if (newProjFormDisplay && e.key === 'Escape') {
+      setNewProjFormDisplay(false);
     }
   };
-  const showNewProjForm = () => {
-    maskDisplay === true ? setMaskDisplay(false) : setMaskDisplay(true);
-    newProjFormDisplay === true
-      ? setNewProjFormDisplay(false)
-      : setNewProjFormDisplay(true);
+  const toggleNewProjForm = () => {
+    newProjFormDisplay ? setNewProjFormDisplay(false) : setNewProjFormDisplay(true);
   };
   const addProject = (name, date) => {
     console.log(name);
@@ -285,14 +278,29 @@ const TodoListApp = () => {
     // switch view to first project in list
   };
 
+  const [filterValues, setFilterValues] = useState({});
+
+  // const [filteredArray, setFilteredArray] = useState(currentProject.tasks);
+  // if (filterValues.done === 1) {
+  //   setFilteredArray(currentProject.tasks.filter((task) => task.completed === false));
+  // } else if (filterValues.done === 2) {
+  //   setFilteredArray(currentProject.tasks.filter((task) => task.completed === true));
+  // }
+  // else {
+  //     setFilteredArray(currentProject.tasks);
+  // }
+  console.log(currentProject.tasks);
+
   // event listeners
   document.addEventListener('keydown', escape);
+
+  // functions.filterValues = filterValues;
+  // functions.setFilterValues = setFilterValues;
 
   // html
   const html = () => {
     return (
       <div className='page'>
-        <Mask close={close} display={maskDisplay} />
         <NavBar
           projects={projectsArray}
           functions={{
@@ -304,25 +312,46 @@ const TodoListApp = () => {
         <div className='content'>
           <LeftSidebar
             array={projectsArray}
-            functions={{ showNewProjForm, selectProject }}
+            functions={{ toggleNewProjForm, selectProject }}
           />
-          <ProjectContent
-            project={currentProject}
-            functions={{
-              editName,
-              editDate,
-              addTask,
-              editTask,
-              editTaskDate,
-              editPriority,
-              editNotes,
-              editCompleted,
-            }}
-          />
-          <NewProjectForm
-            functions={{ close, addProject }}
-            display={newProjFormDisplay}
-          />
+          <div className='project-content'>
+            <ProjectContentHead
+              project={currentProject}
+              functions={{
+                editName,
+                editDate,
+                addTask,
+                editTask,
+                editTaskDate,
+                editPriority,
+                editNotes,
+                editCompleted,
+                filterValues,
+                setFilterValues,
+              }}
+            />
+            <div className='task'>
+              <TaskList
+                array={currentProject.tasks}
+                functions={{
+                  editName,
+                  editDate,
+                  addTask,
+                  editTask,
+                  editTaskDate,
+                  editPriority,
+                  editNotes,
+                  editCompleted,
+                  setFilterValues,
+                }}
+                filterValues={filterValues}
+              />
+            </div>
+          </div>
+
+          {newProjFormDisplay && (
+            <NewProjectForm functions={{ toggleNewProjForm, addProject }} />
+          )}
         </div>
       </div>
     );
@@ -346,3 +375,7 @@ export default TodoListApp;
 //     at div (<anonymous>)
 //     at div (<anonymous>)
 //     at TodoListApp (TodoList.jsx?t=1738751329721:32:3)
+
+// conditional rendering
+// {showMore && <p>{sculpture.description}</p>}
+// where show more is a boolean

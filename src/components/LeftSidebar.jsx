@@ -3,8 +3,6 @@ import '../css/LeftSidebar.css';
 import ProjectList from './ProjectList';
 
 const LeftSidebar = ({ array, functions }) => {
-  const showNewProjForm = functions.showNewProjForm;
-
   return (
     <div className='left-sidebar'>
       <div className='left-sidebar-top'>
@@ -12,7 +10,10 @@ const LeftSidebar = ({ array, functions }) => {
         <button>Today</button>
         <div className='flex'>
           <button className='projects-button'>Projects: {array.length}</button>
-          <button className='new-project-button' onClick={showNewProjForm}></button>
+          <button
+            className='new-project-button'
+            onClick={functions.toggleNewProjForm}
+          ></button>
         </div>
       </div>
       <ProjectList array={array} functions={functions} />

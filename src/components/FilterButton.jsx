@@ -1,37 +1,36 @@
 'use strict';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Mask from './Mask';
 import CloseButton from './CloseButton';
 
-const FilterButton = ({ filterValues, setFilterValues }) => {
+const FilterButton = ({ filterValues, functions }) => {
   const [showForm, setShowForm] = useState(false);
   const toggleForm = () => {
-    if (showForm) {
-      setShowForm(false);
-    } else {
-      setShowForm(true);
-    }
+    showForm ? setShowForm(false) : setShowForm(true);
   };
+  // close on escape press
+  useEffect(() => {
+    const escape = (e) => {
+      if (e.key === 'Escape') {
+        setShowForm(false);
+      }
+    };
+    if (showForm) document.addEventListener('keydown', escape);
+    return () => document.removeEventListener('keydown', escape);
+  }, [showForm]);
 
-  const escape = (e) => {
-    if (e.key === 'Escape' && showForm) {
-      toggleForm();
-      document.removeEventListener('keydown', escape);
-    }
-  };
-  document.addEventListener('keydown', escape);
   const [doneValue, setDoneValue] = useState(0);
   const filter = () => {
     const x = filterValues;
     x.done = Number(doneValue);
-    setFilterValues(x);
+    functions.setFilterValues(x);
     console.log(filterValues);
   };
   if (showForm) {
     return (
       <>
         <div className='filter-button' onClick={toggleForm}></div>
-        <Mask close={toggleForm} display={true} />
+        <Mask onClose={toggleForm} />
         <div className='task-filter-div'>
           <CloseButton close={toggleForm} />
           <label htmlFor='filter-done'>Filter by completion</label>

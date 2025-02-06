@@ -1,5 +1,5 @@
 'use strict';
-import EditText from './EditText';
+import EditText from './EditText/EditText';
 import EditTaskDate from './EditTaskDate';
 import EditPriority from './EditPriority';
 import EditNotes from './EditNotes';
@@ -14,8 +14,6 @@ const Task = ({ task, functions }) => {
       <EditText
         textInput={task.task}
         editTextCallback={functions.editTask}
-        textClass='task-name truncate'
-        editClass='task-name-edit'
         taskId={task.id}
       />
       <EditTaskDate
@@ -51,20 +49,10 @@ const Task = ({ task, functions }) => {
 };
 
 const TaskList = ({ array, functions, filterValues }) => {
-  // const [x, setX] = useState(filterValues)
-  let filteredArray;
-  if (filterValues.done === 1) {
-    filteredArray = array.filter((task) => task.completed === false);
-  } else if (filterValues.done === 2) {
-    filteredArray = array.filter((task) => task.completed === true);
-  } else {
-    filteredArray = array;
-  }
-  console.log(filterValues);
-  const tasks = filteredArray.map((task) => (
+  const tasks = array.map((task) => (
     <Task key={task.id} task={task} functions={functions} />
   ));
-  return <div className='task-list'>{tasks}</div>;
+  return <>{array.length > 0 && <div className='task-list'>{tasks}</div>}</>;
 };
 
 export default TaskList;

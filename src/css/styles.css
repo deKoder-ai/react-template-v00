@@ -98,19 +98,7 @@ select:focus {
   align-items: center;
 }
 
-.mask {
-  position: fixed;
-  display: block;
-  top: 0px;
-  left: 0px;
-  background-color: #0000009f;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: 1000;
-}
-.mask:hover {
-  cursor: pointer;
-}
+
 .form-error {
   font-family: poppins;
   font-size: 1.4rem;
@@ -246,6 +234,7 @@ select:focus {
 }
 
 .task-list {
+  position: relative;
   background-color: #3a3747;
   width: 100%;
   overflow-y: scroll;
@@ -264,28 +253,13 @@ select:focus {
 .task-list p {
   font-size: 1.4rem;
 }
-.task-name {
-  transform: translateX(-2rem);
-  width: calc(100% + 2rem);
-}
+
 .truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.todo-item .task-name-edit {
-  position: relative;
-  transform: translateX(-2rem) translateY(-0.1rem);
-  width: calc(100% + 2rem);
-  border: none;
-  outline: none;
-  background-color: rgba(0, 128, 0, 0);
-  z-index: 1001;
-  font-size: 1.4rem;
-  margin: 0rem;
-  padding: 0rem;
-  border-radius: 0px;
-}
+
 .task-date {
   text-align: right;
   font-weight: 400;

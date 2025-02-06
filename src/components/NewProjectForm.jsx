@@ -1,11 +1,10 @@
 'use strict';
 import { useState } from 'react';
+import Mask from './Mask';
 import CloseButton from './CloseButton';
 import FormError from './FormError';
 
-const NewProjectForm = ({ functions, display }) => {
-  // assign props
-  const close = functions.close;
+const NewProjectForm = ({ functions }) => {
   const newProject = functions.addProject;
   // set state
   const [name, setName] = useState('');
@@ -24,7 +23,7 @@ const NewProjectForm = ({ functions, display }) => {
     if (name && date) {
       setFormErrorDisplay(false);
       newProject(name, date);
-      close();
+      functions.toggleNewProjForm();
       setName('');
       setDate('');
     } else {
@@ -32,8 +31,9 @@ const NewProjectForm = ({ functions, display }) => {
     }
   };
 
-  if (display === true) {
-    return (
+  return (
+    <>
+      <Mask onClose={functions.toggleNewProjForm} />
       <div className='new-project-form'>
         <h3>NEW PROJECT</h3>
         <div className='flex'>
@@ -70,12 +70,10 @@ const NewProjectForm = ({ functions, display }) => {
             Create
           </button>
         </div>
-        <CloseButton close={close} />
+        <CloseButton close={functions.toggleNewProjForm} />
       </div>
-    );
-  } else {
-    return null;
-  }
+    </>
+  );
 };
 
 export default NewProjectForm;

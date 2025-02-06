@@ -44,7 +44,7 @@ const EditNotes = ({
         <p className={displayClass} onClick={notesEditDisplay}>
           {notes}
         </p>
-        <Mask close={maskClick} display={true} />
+        <Mask onClose={maskClick} />
         <div className='task-notes-edit-div'>
           <CloseButton close={maskClick} />
           <label htmlFor='new-task-task-notes'>{taskInput}</label>

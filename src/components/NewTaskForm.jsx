@@ -52,9 +52,6 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
     if (e.key === 'Escape') {
       document.removeEventListener('keydown', keyEvent);
       closeForm();
-    } else if (e.key === 'Enter') {
-      document.removeEventListener('keydown', keyEvent);
-      submit();
     }
   };
 
@@ -62,7 +59,7 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
     document.addEventListener('keydown', keyEvent);
     return (
       <>
-        <Mask display={true} close={closeForm} />
+        <Mask onClose={closeForm} />
         <div className='new-task-form'>
           <h3>NEW TASK</h3>
           <div>
@@ -103,9 +100,7 @@ const NewTaskForm = ({ functions, display, setDisplayNewTaskForm }) => {
               >
                 <option value='Critical'>Critical</option>
                 <option value='High'>High</option>
-                <option value='Medium' selected>
-                  Medium
-                </option>
+                <option value='Medium'>Medium</option>
                 <option value='Low'>Low</option>
                 <option value='Very Low'>Very Low</option>
               </select>

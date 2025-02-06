@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Mask from './Mask';
 import FormError from './FormError';
 
-const UploadForm = ({ display, toggle, functions }) => {
+const UploadForm = ({ toggle, functions }) => {
   const [submitOk, setSubmitOk] = useState(false);
   const [file, setFile] = useState([]);
 
@@ -50,31 +50,27 @@ const UploadForm = ({ display, toggle, functions }) => {
     }
   };
 
-  if (display) {
-    return (
-      <>
-        <Mask close={toggle} display={display} />
-        <div className='upload-form'>
-          <label htmlFor='file-input'>Select projects file:</label>
-          <input
-            type='file'
-            id='file-input'
-            name='file-input'
-            autoFocus
-            onChange={checkFile}
-          ></input>
-          <FormError text={formErrorText} display={functions.formErrorDisplay} />
-          <div className='flex'>
-            <button className='submit-button' onClick={load}>
-              Load
-            </button>
-          </div>
+  return (
+    <>
+      <Mask onClose={toggle} />
+      <div className='upload-form'>
+        <label htmlFor='file-input'>Select projects file:</label>
+        <input
+          type='file'
+          id='file-input'
+          name='file-input'
+          autoFocus
+          onChange={checkFile}
+        ></input>
+        <FormError text={formErrorText} display={functions.formErrorDisplay} />
+        <div className='flex'>
+          <button className='submit-button' onClick={load}>
+            Load
+          </button>
         </div>
-      </>
-    );
-  } else {
-    return null;
-  }
+      </div>
+    </>
+  );
 };
 
 export default UploadForm;
